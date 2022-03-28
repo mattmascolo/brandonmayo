@@ -1,4 +1,3 @@
-import React from 'react'
 
 const musicplayer = () => {
   return (
@@ -70,7 +69,6 @@ const musicplayer = () => {
           </ul>
         </div>
       </div>
-
     </div>
   )
 }
