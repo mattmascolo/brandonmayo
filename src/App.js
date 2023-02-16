@@ -45,7 +45,7 @@ const musicList = [
   },
   {
     title: "Bleach OST 2 #11 Here To Stay",
-    src: "/songs/11Bleach OST 2 #11 Here To Stay.mp3",
+    src: "/songs/11Bleach OST 2 - 11 Here To Stay.mp3",
   },
   {
     title: "Boruto Naruto the Movie OST - Spin and Burst",
