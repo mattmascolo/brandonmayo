@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import "./styles/styles.css";
 
 const musicList = [
   {
@@ -303,18 +304,26 @@ function App() {
 
     //handle click next
     const handleClickNext = () => {
+        if (currentSong === musicList.length - 1) {
+            setCurrentSong(0)
+            return
+        }
         setCurrentSong(currentSong + 1)
     }
     const handleClickPrevious = () => {
+        if (currentSong === 0) {
+            setCurrentSong(musicList.length - 1)
+            return
+        }
         setCurrentSong(currentSong - 1)
     }
 
   return (
-    <div className="App">
-      <div className="container mx-auto my-8">
+    <div className="App bg-gray-600">
+      <div className="container mx-auto py-8 px-1">
         <div className="flex justify-center">
             <div className="w-1/2">
-                <h2 className="text-2xl text-center mb-4">{musicList[currentSong].title}</h2>
+                <h2 className="text-2xl text-center mb-6 text-gray-200">{musicList[currentSong].title}</h2>
             </div>
         </div>
         <AudioPlayer
@@ -324,7 +333,19 @@ function App() {
           showSkipControls={true}
           onClickNext={handleClickNext}
           onClickPrevious={handleClickPrevious}
+          onEnded={(e) => handleClickNext()}
         />
+        <div>
+            <ul className="mt-4">
+                {musicList.map((music, index) => (
+                    <li key={index} className="text-center">
+                        <button className="text-gray-300 bg-slate-900 w-full py-3 border-b border-b-gray-500 hover:bg-gray-800" onClick={() => setCurrentSong(index)}>
+                            {music.title}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
       </div>
     </div>
   );
